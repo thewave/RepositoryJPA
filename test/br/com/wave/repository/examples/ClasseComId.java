@@ -1,0 +1,18 @@
+package br.com.wave.repository.examples;
+
+import java.io.Serializable;
+
+import org.hibernate.annotations.Entity;
+
+@Entity
+public class ClasseComId implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+}
