@@ -3,3 +3,29 @@ RepositoryJPA
 
 This project intends to be a generic repository for JPA instances
 
+Validar as entidades
+Inclusao de objetos
+Alteracao
+Exclusao logica
+Listagem sem parametros
+Consulta parametrizada
+
+@Entity
+public class Entidade implements Serializable {
+	
+	@Id
+	private Long id;
+	
+	@Version
+	private Integer version;
+	
+	private Boolean active;
+	
+	public Entidade(){
+	}
+	
+	equals();
+	
+	hashCode();
+	
+}

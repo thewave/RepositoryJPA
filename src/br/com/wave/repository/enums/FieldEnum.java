@@ -2,7 +2,9 @@ package br.com.wave.repository.enums;
 
 public enum FieldEnum {
 
-	ID("id");
+	ID("id"),
+	VERSION("version"),
+	ACTIVE("active");
 
 	private String value;
 

@@ -1,6 +1,6 @@
 package br.com.wave.repository.examples;
 
-import org.hibernate.annotations.Entity;
+import javax.persistence.Entity;
 
 @Entity
 public class ClasseNaoSerializavel {
