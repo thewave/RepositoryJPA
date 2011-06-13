@@ -7,6 +7,8 @@ Validar as entidades
 Inclusao de objetos
 Alteracao
 Exclusao logica
+Carregar
+Example
 Listagem sem parametros
 Consulta parametrizada
 
@@ -22,10 +24,7 @@ public class Entidade implements Serializable {
 	private Boolean active;
 	
 	public Entidade(){
+	
 	}
-	
-	equals();
-	
-	hashCode();
 	
 }
