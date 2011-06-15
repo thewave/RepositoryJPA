@@ -12,7 +12,9 @@ import br.com.wave.repository.enums.FieldEnum;
 import br.com.wave.repository.exceptions.RepositoryException;
 import br.com.wave.utils.reflection.ReflectionUtil;
 
-public class Validator {
+public class Validator implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	public void validate(Class<?> klass) throws RepositoryException {
 		if (!ReflectionUtil.isAnnotated(klass, Entity.class)) {
@@ -28,7 +30,7 @@ public class Validator {
 		this.validateVersion(klass);
 
 		this.validateActive(klass);
-		
+
 		if (!ReflectionUtil.hasConstructor(klass)) {
 			throw new RepositoryException(ErrorEnum.CONSTRUCTOR_NOT_FOUND.getMessage());
 		}

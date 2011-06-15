@@ -1,5 +1,7 @@
 package br.com.wave.repository.core;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -8,7 +10,9 @@ import org.apache.log4j.Logger;
 import br.com.wave.repository.enums.InfoEnum;
 import br.com.wave.repository.exceptions.RepositoryException;
 
-public class Repository {
+public class Repository implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Validator validator;

@@ -1,5 +1,8 @@
 package br.com.wave.repository.producers;
 
+import java.io.Serializable;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
@@ -11,7 +14,9 @@ import org.apache.log4j.Logger;
 
 import br.com.wave.repository.enums.InfoEnum;
 
-public class EntityProducer {
+public class EntityProducer implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private static EntityManagerFactory factory;
 
@@ -19,10 +24,11 @@ public class EntityProducer {
 	private Logger logger;
 
 	static {
-		factory = Persistence.createEntityManagerFactory("repositoryPU");
+		factory = Persistence.createEntityManagerFactory("persistenceUnit");
 	}
 
 	@Produces
+	@ApplicationScoped
 	public EntityManager getEntityManager() {
 		this.logger.info(InfoEnum.OPEN.getMessage());
 

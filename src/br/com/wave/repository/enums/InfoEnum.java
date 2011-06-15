@@ -4,8 +4,13 @@ public enum InfoEnum {
 
 	PERSIST("info.message.persist"),
 	REMOVE("info.message.remove"),
+	
 	OPEN("info.message.open"),
-	CLOSE("info.message.close");
+	CLOSE("info.message.close"),
+	
+	BEGIN("info.message.begin"),
+	COMMIT("info.message.commit"),
+	ROLLBACK("info.message.rollback");
 
 	private String message;
 
