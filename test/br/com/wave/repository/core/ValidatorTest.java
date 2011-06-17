@@ -6,18 +6,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.wave.repository.core.examples.ClasseNaoSerializavel;
+import br.com.wave.repository.core.examples.ClasseSemActive;
+import br.com.wave.repository.core.examples.ClasseSemActiveBoolean;
+import br.com.wave.repository.core.examples.ClasseSemAtEntity;
+import br.com.wave.repository.core.examples.ClasseSemAtId;
+import br.com.wave.repository.core.examples.ClasseSemAtVersion;
+import br.com.wave.repository.core.examples.ClasseSemConstrutorPadrao;
+import br.com.wave.repository.core.examples.ClasseSemId;
+import br.com.wave.repository.core.examples.ClasseSemIdLong;
+import br.com.wave.repository.core.examples.ClasseSemVersion;
+import br.com.wave.repository.core.examples.ClasseSemVersionInteger;
 import br.com.wave.repository.enums.ErrorEnum;
-import br.com.wave.repository.examples.ClasseNaoSerializavel;
-import br.com.wave.repository.examples.ClasseSemActive;
-import br.com.wave.repository.examples.ClasseSemActiveBoolean;
-import br.com.wave.repository.examples.ClasseSemAtEntity;
-import br.com.wave.repository.examples.ClasseSemAtId;
-import br.com.wave.repository.examples.ClasseSemAtVersion;
-import br.com.wave.repository.examples.ClasseSemConstrutorPadrao;
-import br.com.wave.repository.examples.ClasseSemId;
-import br.com.wave.repository.examples.ClasseSemIdLong;
-import br.com.wave.repository.examples.ClasseSemVersion;
-import br.com.wave.repository.examples.ClasseSemVersionInteger;
 import br.com.wave.repository.exceptions.RepositoryException;
 
 public class ValidatorTest {
