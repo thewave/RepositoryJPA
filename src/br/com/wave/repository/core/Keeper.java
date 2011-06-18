@@ -32,29 +32,24 @@ public class Keeper implements Serializable {
 
 		this.logger.info(InfoEnum.PERSIST.getMessage());
 
-		this.manager.persist(instance);
+		Field field = ReflectionUtil.getField(FieldEnum.ID.getValue(), instance.getClass());
+		if (ReflectionUtil.get(field, instance) == null) {
+			this.manager.persist(instance);
+		} else {
+			this.manager.merge(instance);
+		}
 	}
 
 	public <T> void remove(T instance) throws RepositoryException {
+		this.remove(instance, RemoveEnum.LOGICAL);
+	}
+
+	public <T> void remove(T instance, RemoveEnum type) throws RepositoryException {
 		this.validator.validate(instance.getClass());
 
 		this.logger.info(InfoEnum.REMOVE.getMessage());
 
-		Field field = ReflectionUtil.getField(FieldEnum.ACTIVE.getValue(), instance.getClass());
-		ReflectionUtil.set(Boolean.FALSE, field, instance);
-
-		this.manager.persist(instance);
+		type.remove(instance, this.manager);
 	}
 
-	public <T> void remove(T instance, RemoveEnum type) throws RepositoryException {
-		if (type.equals(RemoveEnum.LOGICAL)) {
-			this.remove(instance);
-		} else {
-			this.validator.validate(instance.getClass());
-
-			this.logger.info(InfoEnum.REMOVE.getMessage());
-
-			this.manager.remove(instance);
-		}
-	}
 }
