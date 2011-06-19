@@ -3,6 +3,11 @@ RepositoryJPA
 
 This project intends to be a generic repository for JPA instances
 
+FALTA *********************
+- PERSISTENCE UNIT
+- I18N
+***************************
+
 Validar as entidades
 Inclusao de objetos
 Alteracao
