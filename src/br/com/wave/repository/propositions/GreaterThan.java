@@ -12,5 +12,5 @@ public class GreaterThan extends Proposition{
 	public String getOperator() {
 		return OperatorEnum.GREATER_THAN.getValue();
 	}
-
+	
 }

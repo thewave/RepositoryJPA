@@ -12,5 +12,5 @@ public class LesserEquals extends Proposition{
 	public String getOperator() {
 		return OperatorEnum.LESSER_EQUALS.getValue();
 	}
-
+	
 }

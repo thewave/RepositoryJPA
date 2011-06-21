@@ -34,8 +34,7 @@ public class Entidade implements Serializable {
 	
 }
 
-Delivery d = new Delivery();
-d.select(X.class);
-d.whose(new Equals("atributo", valor));
-d.fetch();
-d.fetchAll();
+Seeker s = new Seeker();
+s.giveme(X.class,ALL/SINGLE);
+s.whose(new Equals("atributo", valor));
+s.go();

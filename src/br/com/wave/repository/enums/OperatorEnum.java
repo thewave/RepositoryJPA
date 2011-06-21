@@ -7,7 +7,10 @@ public enum OperatorEnum {
 	LESSER_EQUALS(" <= "), 
 	GREATER_EQUALS(" >= "), 
 	EQUALS(" = "), 
-	NOT_EQUALS(" <> ");
+	NOT_EQUALS(" <> "), 
+	IS_NULL(" is null "), 
+	IS_NOT_NULL(" is not null "), 
+	BETWEEN(" between ");
 	
 	private String value;
 	
