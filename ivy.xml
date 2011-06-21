@@ -26,38 +26,17 @@
 	</info>
 	<dependencies>
 		<dependency org="antlr" name="antlr" rev="2.7.6"/>
-		<dependency org="commons-collections" name="commons-collections" rev="3.1">
-			<exclude name="junit"/>
-		</dependency>
-		<dependency org="dom4j" name="dom4j" rev="1.6.1">
-			<exclude name="testng"/>
-		</dependency>
+		<dependency org="commons-collections" name="commons-collections" rev="3.1"/>
+		<dependency org="dom4j" name="dom4j" rev="1.6.1"/>
 		<dependency org="org.hibernate.javax.persistence" name="hibernate-jpa-2.0-api" rev="1.0.0.Final"/>
-		<dependency org="org.hibernate" name="hibernate-jpamodelgen" rev="1.0.0.Final">
-			<exclude name="hibernate-jpa-2.0-api"/>
-			<exclude name="slf4j-api" />
-      		<exclude name="slf4j-log4j12" />
-			<exclude name="testng" />			
-		</dependency>
+		<dependency org="org.hibernate" name="hibernate-jpamodelgen" rev="1.0.0.Final"/>
 		<dependency org="org.hibernate" name="hibernate" rev="3.5.0-Final"/>
-		<dependency org="javassist" name="javassist" rev="3.9.0.GA">
-			<exclude name="junit" />
-		</dependency>
+		<dependency org="javassist" name="javassist" rev="3.9.0.GA"/>
 		<dependency org="javax.transaction" name="jta" rev="1.1"/>
-		<dependency org="log4j" name="log4j" rev="1.2.15">
-			<exclude name="jmxtools"/>
-			<exclude name="jmxri" />
-			<exclude name="jms" />
-			<exclude name="mail" />
-			<exclude name="junit" />
-			<exclude name="oro" />
-		</dependency>
+		<dependency org="log4j" name="log4j" rev="1.2.15"/>
 		<dependency org="org.slf4j" name="slf4j-api" rev="1.5.8"/>
       	<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.5.8" />
       	<dependency org="org.mockito" name="mockito-all" rev="1.8.5"/>
-      	<!-- dependency org="org.jboss.weld" name="weld-se" rev="1.0.1-Final">
-			<exclude name="testng" />
-			<exclude name="slf4j-simple" />
-		</dependency-->      		
+      	<dependency org="org.jboss.weld.se" name="weld-se" rev="1.1.1.Final"/>
    </dependencies>
 </ivy-module>
