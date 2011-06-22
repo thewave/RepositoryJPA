@@ -8,6 +8,10 @@ FALTA *********************
 - I18N
 ***************************
 
+Implementar o OR, IN, COUNT e ORDERBY.
+Implementar ALL e SINGLE.
+Validar a estrutura.
+
 Validar as entidades
 Inclusao de objetos
 Alteracao

@@ -15,53 +15,56 @@ public class Seeker {
 
 	private List<Proposition> propositions;
 
+	private StringBuilder builder;
+
 	@Inject
 	private EntityManager manager;
 
 	public Seeker() {
 		this.propositions = new ArrayList<Proposition>();
+		this.builder = new StringBuilder();
 	}
 
 	public Seeker giveme(Class<?> klass) {
 		this.klass = klass;
+
+		this.builder.append("select o from ");
+		this.builder.append(this.klass.getName());
+		this.builder.append(" o ");
+
 		return this;
 	}
 
 	public Seeker whose(Proposition proposition) {
+		if (this.propositions.isEmpty()) {
+			this.builder.append(" where ");
+		} else {
+			this.builder.append(" and ");
+		}
+
 		proposition.setIndex(this.propositions.size());
-		propositions.add(proposition);
-		
+		proposition.setConditionalTerm(this.builder);
+
+		// TODO Pensar numa maneira de retirar o indice.
+		this.propositions.add(proposition);
+
 		return this;
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T> List<T> go() {
-		StringBuilder builder = new StringBuilder();
+		System.out.println(this.getJPQL());
 
-		builder.append("select o from ");
-		builder.append(this.klass.getName());
-		builder.append(" o ");
-
-		if (!this.propositions.isEmpty()) {
-			builder.append(" where ");
-		}
-
-		for (int i = 0; i < this.propositions.size(); i++) {
-			if (i > 0) {
-				builder.append(" and ");
-			}
-			Proposition proposition = this.propositions.get(i);
-			builder.append(proposition.getProposition());
-		}
-
-		System.out.println(builder.toString());
-
-		TypedQuery<T> query = (TypedQuery<T>) this.manager.createQuery(builder.toString(), this.klass);
+		TypedQuery<?> query = this.manager.createQuery(this.getJPQL(), this.klass);
 		for (Proposition proposition : this.propositions) {
 			proposition.setParameters(query);
 		}
 
-		return query.getResultList();
+		return (List<T>) query.getResultList();
+	}
+
+	private String getJPQL() {
+		return this.builder.toString();
 	}
 
 }

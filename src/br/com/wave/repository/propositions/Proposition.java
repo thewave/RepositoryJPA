@@ -5,9 +5,9 @@ import javax.persistence.Query;
 public abstract class Proposition {
 
 	private String fieldName;
-	
+
 	private Object[] values;
-	
+
 	private Integer index;
 
 	public Proposition(String fieldName, Object... values) {
@@ -16,14 +16,8 @@ public abstract class Proposition {
 	}
 
 	public abstract String getOperator();
-
-	public void setParameters(Query query) {
-		query.setParameter(this.fieldName + String.valueOf(this.index), this.values[0]);
-	}
-
-	public String getProposition() {
-		StringBuilder builder = new StringBuilder();
-
+	
+	public void setConditionalTerm(StringBuilder builder) {
 		builder.append(" o.");
 		builder.append(this.fieldName);
 		builder.append(" ");
@@ -31,8 +25,10 @@ public abstract class Proposition {
 		builder.append(" :");
 		builder.append(this.fieldName);
 		builder.append(String.valueOf(this.index));
+	}
 
-		return builder.toString();
+	public void setParameters(Query query) {
+		query.setParameter(this.fieldName + String.valueOf(this.index), this.values[0]);
 	}
 
 	public String getFieldName() {
@@ -42,13 +38,13 @@ public abstract class Proposition {
 	public Object[] getValues() {
 		return values;
 	}
-	
+
 	public Integer getIndex() {
 		return index;
 	}
-	
+
 	public void setIndex(Integer index) {
 		this.index = index;
 	}
-	
+
 }

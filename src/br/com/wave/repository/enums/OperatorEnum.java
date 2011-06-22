@@ -10,7 +10,8 @@ public enum OperatorEnum {
 	NOT_EQUALS(" <> "), 
 	IS_NULL(" is null "), 
 	IS_NOT_NULL(" is not null "), 
-	BETWEEN(" between ");
+	BETWEEN(" between "),
+	LIKE(" like ");
 	
 	private String value;
 	

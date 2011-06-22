@@ -4,21 +4,19 @@ import javax.persistence.Query;
 
 import br.com.wave.repository.enums.OperatorEnum;
 
-public class Between extends Proposition{
-	
+public class Between extends Proposition {
+
 	public Between(String fieldName, Object value1, Object value2) {
 		super(fieldName, value1, value2);
-	}	
-	
+	}
+
 	@Override
 	public String getOperator() {
 		return OperatorEnum.BETWEEN.getValue();
 	}
 
 	@Override
-	public String getProposition() {
-		StringBuilder builder = new StringBuilder();
-		
+	public void setConditionalTerm(StringBuilder builder) {
 		builder.append(" o.");
 		builder.append(this.getFieldName());
 		builder.append(" ");
@@ -28,15 +26,13 @@ public class Between extends Proposition{
 		builder.append(" and ");
 		builder.append(" :maximo");
 		builder.append(String.valueOf(this.getIndex()));
-		
-		return builder.toString();
 	}
 
 	@Override
 	public void setParameters(Query query) {
-		
-		query.setParameter("minimo"+String.valueOf(this.getIndex()), this.getValues()[0]);
-		query.setParameter("maximo"+String.valueOf(this.getIndex()), this.getValues()[1]);
+
+		query.setParameter("minimo" + String.valueOf(this.getIndex()), this.getValues()[0]);
+		query.setParameter("maximo" + String.valueOf(this.getIndex()), this.getValues()[1]);
 	}
 
 }
