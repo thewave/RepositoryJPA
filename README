@@ -1,28 +1,59 @@
-RepositoryJPA
--------------
-
-This project intends to be a generic repository for JPA instances
-
-FALTA *********************
+****
+TODO
 - PERSISTENCE UNIT
 - I18N
-***************************
 
+Validar as entidades - Ok
+Inclusao de objetos - Ok 
+Alteracao - Ok
+Exclusao logica - Ok 
+Carregar
+Example
+Listagem sem parametros -  Ok
+Consulta parametrizada - Working on it
 Implementar o OR, IN, COUNT e ORDERBY.
 Implementar ALL e SINGLE.
 Validar a estrutura.
+Buscar apenas itens ativos.
+****
 
-Validar as entidades
-Inclusao de objetos
-Alteracao
-Exclusao logica
-Carregar
-Example
-Listagem sem parametros
-Consulta parametrizada
+RepositoryJPA
+-------------
+This project intends to be a generic repository for JPA instances. 
+
+It isolates the developer from knowing the databases and transactions and criterias.
+
+
+Usage
+-----
+Keeper k = new Keeper();
+k.persist(instance);
+k.remove(instance);
+k.remove(instance, RemoveEnum.LOGICAL)
+k.remove(instance, RemoveEnum.PHYSICAL)
+
+Seeker s = new Seeker();
+s.giveme(X.class,ALL/SINGLE);
+s.whose(new Equals("field", value));
+s.go();
+
+
+Requirements
+------------
+The entities have to fulfill some requirements before persist. 
+
+1) It must have an @Entity.
+2) It must implements Serializable.
+3) It must have a Long id field, annotated with @Id.
+4) It must have an Integer version field, annotated with @Version.
+5) It must have a Boolean active field (for logical removal).
+6) It must have a public constructor without arguments (or none, if there aren't any other constructors).
+7) It must have an Equals and a HashCode methods.
+
+There is an example:
 
 @Entity
-public class Entidade implements Serializable {
+public class BasicEntity implements Serializable {
 	
 	@Id
 	private Long id;
@@ -33,12 +64,31 @@ public class Entidade implements Serializable {
 	private Boolean active;
 	
 	public Entidade(){
-	
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 	
 }
 
-Seeker s = new Seeker();
-s.giveme(X.class,ALL/SINGLE);
-s.whose(new Equals("atributo", valor));
-s.go();
+Development Environment
+----------- -----------
+Eclipse
+IvyDE
+JPA (Hibernate)
+CDI (Weld)
+RepositoryJPA
+
+JUnit
+Mockito
+HSQLDB
+
+It uses ProjectJPA to execute tests
+
