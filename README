@@ -1,7 +1,7 @@
 ****
 TODO
 - PERSISTENCE UNIT
-- I18N
+- I18N - Erro no EntityProducer - n‹o encontrou o ResourceBundle
 
 Validar as entidades - Ok
 Inclusao de objetos - Ok 
@@ -11,6 +11,7 @@ Carregar
 Example
 Listagem sem parametros -  Ok
 Consulta parametrizada - Working on it
+
 Implementar o OR, IN, COUNT e ORDERBY.
 Implementar ALL e SINGLE.
 Validar a estrutura.

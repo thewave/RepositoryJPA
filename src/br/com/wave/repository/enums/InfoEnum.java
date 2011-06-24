@@ -12,14 +12,19 @@ public enum InfoEnum {
 	COMMIT("info.message.commit"),
 	ROLLBACK("info.message.rollback");
 
-	private String message;
+	private String key;
 
 	private InfoEnum(String message) {
-		this.message = message;
+		this.key = message;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getMessage(Object... params) {
+//		ResourceBundle bundle = ResourceBundle.getBundle("messages", Locale.getDefault());
+//
+//		String value = bundle.getString(this.key);
+//		
+//		return new MessageFormat(value).format(params);
+		return this.key;
 	}
 
 }
