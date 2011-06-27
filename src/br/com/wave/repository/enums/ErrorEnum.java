@@ -28,7 +28,7 @@ public enum ErrorEnum {
 	}
 	
 	public String getMessage(Object... params) {
-		ResourceBundle bundle = ResourceBundle.getBundle("messages", Locale.getDefault());
+		ResourceBundle bundle = ResourceBundle.getBundle("br.com.wave.repository.messages.messages", Locale.getDefault());
 
 		String value = bundle.getString(this.key);
 		

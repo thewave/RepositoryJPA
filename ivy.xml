@@ -25,8 +25,8 @@
         status="integration">
 	</info>
 	<dependencies>
-		<dependency org="log4j" name="log4j" rev="1.2.15"/>
-		<dependency org="org.hibernate.javax.persistence" name="hibernate-jpa-2.0-api" rev="1.0.0.Final"/>
-      	<dependency org="org.jboss.weld.se" name="weld-se" rev="1.1.1.Final"/>
+		<dependency org="log4j" name="log4j" rev="1.2.15" transitive="false"/>
+		<dependency org="org.hibernate.javax.persistence" name="hibernate-jpa-2.0-api" rev="1.0.0.Final" transitive="false"/>
+      	<dependency org="org.jboss.weld.se" name="weld-se" rev="1.1.1.Final" transitive="false"/>
    </dependencies>
 </ivy-module>

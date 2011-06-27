@@ -1,5 +1,9 @@
 package br.com.wave.repository.enums;
 
+import java.text.MessageFormat;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public enum InfoEnum {
 
 	PERSIST("info.message.persist"),
@@ -19,12 +23,11 @@ public enum InfoEnum {
 	}
 
 	public String getMessage(Object... params) {
-//		ResourceBundle bundle = ResourceBundle.getBundle("messages", Locale.getDefault());
-//
-//		String value = bundle.getString(this.key);
-//		
-//		return new MessageFormat(value).format(params);
-		return this.key;
+		ResourceBundle bundle = ResourceBundle.getBundle("br.com.wave.repository.messages.messages", Locale.getDefault());
+
+		String value = bundle.getString(this.key);
+		
+		return new MessageFormat(value).format(params);
 	}
 
 }
