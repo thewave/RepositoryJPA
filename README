@@ -5,12 +5,19 @@ Validar as entidades - Ok
 Inclusao de objetos - Ok 
 Alteracao - Ok
 Exclusao logica - Ok 
-Example
 Listagem sem parametros -  Ok
-Consulta parametrizada - Working on it
+Consulta parametrizada - Ok
 Validar a estrutura - Ok
 Buscar apenas itens ativos - Ok
-Colocar enums para o inicio da consulta
+Colocar enums para o inicio da consulta - Ok
+
+
+Consulta by Google.
+Reescrever Readme.
+Documentar o codigo.
+Traduzir mensagens de erro.
+
+
 ****
 
 RepositoryJPA
@@ -108,17 +115,26 @@ Seeker s = new Seeker();
 List<X> l = s.seekAll(X.class) -- OK
 
 List<X> l = s.seekByExample(X.class, object);
-X x = s.seekOne(X.class)
-Long qtde = s.count(X.class)
+X x = s.seekOne(X.class) -- OK
+Long qtde = s.count(X.class) -- OK
 
 
 Proposicoes:
 AND(new Equals(...), new Between(...)) -- OK
 OR(new Equals(...), new Between(...)) -- OK
 NOT(...) -- OK
-ORDERBY
+ORDERBY -- OK
 
 Modificar o Like -- OK
+
+Lancar excecao JPQL - Ok
+
+
+
+
+Proposicao composta nao tem order by.
+
+
 
 OK daqui...
 BETWEEN

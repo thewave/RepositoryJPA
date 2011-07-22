@@ -46,7 +46,7 @@ public class PropositionValidatorTest {
 		try {
 			this.validator.validate(new Not(new Equals("", 0)));
 		} catch (RepositoryException e) {
-			fail();
+			fail(e.getMessage());
 		}
 	}
 
@@ -70,7 +70,7 @@ public class PropositionValidatorTest {
 			this.validator.validate(new IsNull(""));
 			this.validator.validate(new IsNotNull(""));
 		} catch (RepositoryException e) {
-			fail();
+			fail(e.getMessage());
 		}
 	}
 
@@ -102,7 +102,7 @@ public class PropositionValidatorTest {
 			this.validator.validate(new And(new Equals("", 0), new Equals("", 0)));
 			this.validator.validate(new Or(new Equals("", 0), new Equals("", 0)));
 		} catch (RepositoryException e) {
-			fail();
+			fail(e.getMessage());
 		}
 	}
 

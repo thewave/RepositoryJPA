@@ -2,7 +2,7 @@ package br.com.brasilti.repository.propositions;
 
 import javax.persistence.Query;
 
-public abstract class SimpleProposition implements Proposition {
+public abstract class SimpleProposition extends Proposition {
 
 	private String fieldName;
 
@@ -23,7 +23,6 @@ public abstract class SimpleProposition implements Proposition {
 		return values;
 	}
 
-	// TODO Rever o index.
 	@Override
 	public void fillQLString(StringBuilder builder) {
 		builder.append("o.");

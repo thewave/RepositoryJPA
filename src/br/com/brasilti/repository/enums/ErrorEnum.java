@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public enum ErrorEnum {
-//	TODO Traduzir as mensagens de erro.
+	
 	NULL_CLASS("error.message.nullClass"),
 	NULL_INSTANCE("error.message.nullInstance"),
 	
@@ -28,7 +28,11 @@ public enum ErrorEnum {
 	
 	NULL_SUBJECT("error.message.nullSubject"),
 	NULL_PREDICATIVE("error.message.nullPredicative"),
-	EMPTY_PREDICATIVE("error.message.emptyPredicative");
+	EMPTY_PREDICATIVE("error.message.emptyPredicative"),
+	
+	MORE_THAN_ONE_INSTANCE("error.message.moreThanOneInstance"),
+	
+	UNEXPECTED_EXCEPTION("error.message.unexpectedException");
 	
 	private String key;
 

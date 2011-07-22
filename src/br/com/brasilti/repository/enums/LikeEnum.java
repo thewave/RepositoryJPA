@@ -12,7 +12,7 @@ public enum LikeEnum {
 			query.setParameter(proposition.getSubject() + String.valueOf(proposition.hashCode()), proposition.getPredicative()[0] + "%");
 		}
 	},
-	MIDDLE {
+	ANY_WHERE {
 		@Override
 		public void setParameters(Proposition proposition, Query query) {
 			query.setParameter(proposition.getSubject() + String.valueOf(proposition.hashCode()), "%" + proposition.getPredicative()[0] + "%");

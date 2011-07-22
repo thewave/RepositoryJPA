@@ -11,7 +11,7 @@ public class Like extends SimpleProposition {
 
 	public Like(String fieldName, Object value) {
 		super(fieldName, value);
-		this.likeEnum = LikeEnum.MIDDLE;
+		this.likeEnum = LikeEnum.ANY_WHERE;
 	}
 
 	public Like(String fieldName, Object value, LikeEnum likeEnum) {

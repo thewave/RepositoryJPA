@@ -4,16 +4,25 @@ import javax.persistence.Query;
 
 import br.com.brasilti.repository.enums.VerbEnum;
 
-public interface Proposition {
+public abstract class Proposition implements Comparable<Proposition> {
 
-	Object getSubject();
+	public abstract Object getSubject();
 
-	VerbEnum getVerb();
+	public abstract VerbEnum getVerb();
 
-	Object[] getPredicative();
+	public abstract Object[] getPredicative();
 
-	void fillQLString(StringBuilder builder);
+	public abstract void fillQLString(StringBuilder builder);
 
-	void setParameters(Query query);
+	public abstract void setParameters(Query query);
+
+	@Override
+	public int compareTo(Proposition proposition) {
+		if (this.getVerb().equals(VerbEnum.ORDER_BY) && !proposition.getVerb().equals(VerbEnum.ORDER_BY)) {
+			return 1;
+		}
+
+		return 0;
+	}
 
 }

@@ -24,6 +24,7 @@ public enum VerbEnum {
 	LIKE(" like "),
 	IN(" in "),
 	NOT_IN(" not in "),
+	ORDER_BY(" order by "),
 	AND(" and ") {
 		@Override
 		public boolean isConnective() {

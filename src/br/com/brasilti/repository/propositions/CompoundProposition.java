@@ -2,7 +2,7 @@ package br.com.brasilti.repository.propositions;
 
 import javax.persistence.Query;
 
-public abstract class CompoundProposition implements Proposition {
+public abstract class CompoundProposition extends Proposition {
 
 	private Proposition subject;
 
