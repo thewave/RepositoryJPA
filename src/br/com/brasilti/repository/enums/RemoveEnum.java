@@ -35,6 +35,6 @@ public enum RemoveEnum {
 		}
 	};
 
-	public abstract <T> void remove(T instance, EntityManager manager);
+	public abstract <T> void remove(T instance, EntityManager manager) throws Exception;
 
 }

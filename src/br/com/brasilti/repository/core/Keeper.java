@@ -31,15 +31,23 @@ public class Keeper {
 			throw new RepositoryException(ErrorEnum.NULL_INSTANCE);
 		}
 
-		this.validator.validate(instance.getClass());
+		Class<?> klass = instance.getClass();
+		this.validator.validate(klass);
 
 		this.logger.info(InfoEnum.PERSIST.getMessage());
 
-		Field field = ReflectionUtil.getField(FieldEnum.ID.getValue(), instance.getClass());
-		if (ReflectionUtil.get(field, instance) == null) {
-			this.manager.persist(instance);
-		} else {
-			this.manager.merge(instance);
+		Field active = ReflectionUtil.getField(FieldEnum.ACTIVE.getValue(), klass);
+		ReflectionUtil.set(Boolean.TRUE, active, instance);
+
+		Field field = ReflectionUtil.getField(FieldEnum.ID.getValue(), klass);
+		try {
+			if (ReflectionUtil.get(field, instance) == null) {
+				this.manager.persist(instance);
+			} else {
+				this.manager.merge(instance);
+			}
+		} catch (Exception e) {
+			throw new RepositoryException(ErrorEnum.UNEXPECTED_EXCEPTION.getMessage(e.getMessage()));
 		}
 	}
 
@@ -56,7 +64,11 @@ public class Keeper {
 
 		this.logger.info(InfoEnum.REMOVE.getMessage());
 
-		type.remove(instance, this.manager);
+		try {
+			type.remove(instance, this.manager);
+		} catch (Exception e) {
+			throw new RepositoryException(ErrorEnum.UNEXPECTED_EXCEPTION.getMessage(e.getMessage()));
+		}
 	}
 
 }

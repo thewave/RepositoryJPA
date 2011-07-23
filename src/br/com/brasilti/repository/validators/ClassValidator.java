@@ -45,6 +45,16 @@ public class ClassValidator implements Serializable {
 		}
 	}
 
+	public boolean isEntity(Class<?> klass) {
+		try {
+			this.validate(klass);
+		} catch (RepositoryException e) {
+			return false;
+		}
+
+		return true;
+	}
+
 	private void validateIdentifier(Class<?> klass) throws RepositoryException {
 		if (!ReflectionUtil.hasField(klass, FieldEnum.ID.getValue())) {
 			throw new RepositoryException(ErrorEnum.ID_NOT_FOUND);

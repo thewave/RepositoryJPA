@@ -1,5 +1,6 @@
 package br.com.brasilti.repository.core;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,9 +19,11 @@ import br.com.brasilti.repository.enums.QLEnum;
 import br.com.brasilti.repository.enums.VerbEnum;
 import br.com.brasilti.repository.exceptions.RepositoryException;
 import br.com.brasilti.repository.propositions.Equals;
+import br.com.brasilti.repository.propositions.Like;
 import br.com.brasilti.repository.propositions.Proposition;
 import br.com.brasilti.repository.validators.ClassValidator;
 import br.com.brasilti.repository.validators.PropositionValidator;
+import br.com.brasilti.utils.reflection.ReflectionUtil;
 
 public class Seeker {
 
@@ -43,12 +46,44 @@ public class Seeker {
 		return this.seekAll(klass, new ArrayList<Proposition>(Arrays.asList(propositions)));
 	}
 
+	public <T> T seekOne(Class<T> klass, Proposition... propositions) throws RepositoryException {
+		return this.seekOne(klass, new ArrayList<Proposition>(Arrays.asList(propositions)));
+	}
+
+	public <T> Long count(Class<T> klass, Proposition... propositions) throws RepositoryException {
+		return this.count(klass, new ArrayList<Proposition>(Arrays.asList(propositions)));
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T> List<T> seekByExample(T instance) throws RepositoryException {
+		if (instance == null) {
+			throw new RepositoryException(ErrorEnum.NULL_INSTANCE);
+		}
+
+		List<Proposition> propositions = new ArrayList<Proposition>();
+
+		Class<T> klass = (Class<T>) instance.getClass();
+		List<Field> fields = ReflectionUtil.getPersistentFields(klass);
+		for (Field field : fields) {
+			Object value = ReflectionUtil.get(field, instance);
+			if (!FieldEnum.contains(field.getName()) && value != null && !this.classValidator.isEntity(field.getType())) {
+				if (field.getType().equals(String.class)) {
+					propositions.add(new Like(field.getName(), value));
+				} else {
+					propositions.add(new Equals(field.getName(), value));
+				}
+			}
+		}
+
+		return this.seekAll(klass, propositions);
+	}
+
 	public <T> List<T> seekAll(Class<T> klass, List<Proposition> propositions) throws RepositoryException {
 		this.validate(klass, propositions);
 
 		this.builder.append(QLEnum.SELECT.getValue());
 		this.fillQLString(klass, propositions);
-
+		System.out.println("QL: " + this.getQLString());
 		try {
 			TypedQuery<T> query = this.manager.createQuery(this.getQLString(), klass);
 			this.setParameters(propositions, query);
@@ -57,10 +92,6 @@ public class Seeker {
 		} catch (Exception e) {
 			throw new RepositoryException(ErrorEnum.UNEXPECTED_EXCEPTION.getMessage(e.getMessage()));
 		}
-	}
-
-	public <T> T seekOne(Class<T> klass, Proposition... propositions) throws RepositoryException {
-		return this.seekOne(klass, new ArrayList<Proposition>(Arrays.asList(propositions)));
 	}
 
 	public <T> T seekOne(Class<T> klass, List<Proposition> propositions) throws RepositoryException {
@@ -81,10 +112,6 @@ public class Seeker {
 		} catch (Exception e) {
 			throw new RepositoryException(ErrorEnum.UNEXPECTED_EXCEPTION.getMessage(e.getMessage()));
 		}
-	}
-
-	public <T> Long count(Class<T> klass, Proposition... propositions) throws RepositoryException {
-		return this.count(klass, new ArrayList<Proposition>(Arrays.asList(propositions)));
 	}
 
 	public <T> Long count(Class<T> klass, List<Proposition> propositions) throws RepositoryException {

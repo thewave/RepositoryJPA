@@ -12,6 +12,17 @@ public enum FieldEnum {
 		this.value = value;
 	}
 
+	public static boolean contains(String value) {
+		FieldEnum[] enumerations = FieldEnum.values();
+		for (FieldEnum enumeration : enumerations) {
+			if (enumeration.getValue().equals(value)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public String getValue() {
 		return value;
 	}

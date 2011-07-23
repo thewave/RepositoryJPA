@@ -1,6 +1,8 @@
 package br.com.brasilti.repository.validators;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +12,7 @@ import br.com.brasilti.repository.enums.ErrorEnum;
 import br.com.brasilti.repository.enums.MethodEnum;
 import br.com.brasilti.repository.exceptions.RepositoryException;
 import br.com.brasilti.repository.validators.ClassValidator;
+import br.com.brasilti.repository.validators.examples.ClasseEntidade;
 import br.com.brasilti.repository.validators.examples.ClasseNaoSerializavel;
 import br.com.brasilti.repository.validators.examples.ClasseSemActive;
 import br.com.brasilti.repository.validators.examples.ClasseSemActiveBoolean;
@@ -267,6 +270,16 @@ public class ClassValidatorTest {
 		} catch (RepositoryException e) {
 			assertEquals(ErrorEnum.METHOD_NOT_FOUND.getMessage(MethodEnum.HASHCODE.getValue()), e.getMessage());
 		}
+	}
+	
+	@Test
+	public void deveRetornarFalsoSeAClasseNaoForUmaEntidade() {
+		assertFalse(this.validator.isEntity(ClasseSemHashCode.class));
+	}
+	
+	@Test
+	public void deveRetornarVerdadeiroSeAClasseForUmaEntidade() {
+		assertTrue(this.validator.isEntity(ClasseEntidade.class));
 	}
 
 	@After
