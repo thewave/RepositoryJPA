@@ -27,10 +27,11 @@ public enum ErrorEnum {
 	METHOD_NOT_FOUND("error.message.methodNotFound"),
 	
 	NULL_SUBJECT("error.message.nullSubject"),
-	NULL_PREDICATIVE("error.message.nullPredicative"),
 	EMPTY_PREDICATIVE("error.message.emptyPredicative"),
 	
 	MORE_THAN_ONE_INSTANCE("error.message.moreThanOneInstance"),
+	
+	ORDER_NOT_ALLOWED("error.message.orderNotAllowed"),
 	
 	UNEXPECTED_EXCEPTION("error.message.unexpectedException");
 	

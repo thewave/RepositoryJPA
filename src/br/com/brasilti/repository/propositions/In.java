@@ -1,14 +1,14 @@
 package br.com.brasilti.repository.propositions;
 
-import java.util.Arrays;
 import java.util.List;
 
 import br.com.brasilti.repository.enums.VerbEnum;
+import br.com.brasilti.utils.collection.CollectionUtil;
 
 public class In extends SimpleProposition {
 
 	public In(String fieldName, Object... values) {
-		super(fieldName, Arrays.asList(values));
+		this(fieldName, CollectionUtil.convert(values));
 	}
 
 	public In(String fieldName, List<?> list) {

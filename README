@@ -15,12 +15,64 @@ Colocar enums para o inicio da consulta - Ok
 Lancar excecao no Keeper - Ok
 
 Documentar o Utils.
-
+Estudar o Arquilian
 
 Consulta by Google.
 Reescrever Readme.
 Documentar o codigo.
 Traduzir mensagens de erro.
+
+
+Seeker s = new Seeker();
+List<X> l = s.seekAll(X.class) -- OK
+
+List<X> l = s.seekByExample(X.class, object); -- OK
+X x = s.seekOne(X.class) -- OK
+Long qtde = s.count(X.class) -- OK
+
+
+Proposicoes:
+AND(new Equals(...), new Between(...)) -- OK
+OR(new Equals(...), new Between(...)) -- OK
+NOT(...) -- OK
+ORDERBY -- OK
+
+Modificar o Like -- OK
+
+Lancar excecao JPQL - Ok
+
+
+
+
+Proposicao composta nao tem order by. -- OK
+
+
+
+OK daqui...
+BETWEEN
+EQUALS
+NOTEQUALS
+GREATER
+GREATEREQUALS
+LESSER
+LESSEREQUALS
+ISNULL
+ISNOTNULL
+LIKE
+LIKESTART
+LIKEEND
+IN
+NOTIN
+... até aqui.
+
+Testar:
+Seeker s = new Seeker();
+s.searchAll(Carro.class);
+s.searchAll(Moto.class);
+s.searchAll(Bicicleta.class);
+
+
+
 
 
 ****
@@ -99,67 +151,3 @@ Mockito
 HSQLDB
 
 It uses ProjectJPA to execute tests
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Seeker s = new Seeker();
-List<X> l = s.seekAll(X.class) -- OK
-
-List<X> l = s.seekByExample(X.class, object);
-X x = s.seekOne(X.class) -- OK
-Long qtde = s.count(X.class) -- OK
-
-
-Proposicoes:
-AND(new Equals(...), new Between(...)) -- OK
-OR(new Equals(...), new Between(...)) -- OK
-NOT(...) -- OK
-ORDERBY -- OK
-
-Modificar o Like -- OK
-
-Lancar excecao JPQL - Ok
-
-
-
-
-Proposicao composta nao tem order by.
-
-
-
-OK daqui...
-BETWEEN
-EQUALS
-NOTEQUALS
-GREATER
-GREATEREQUALS
-LESSER
-LESSEREQUALS
-ISNULL
-ISNOTNULL
-LIKE
-LIKESTART
-LIKEEND
-IN
-NOTIN
-... até aqui.
-
-Testar:
-Seeker s = new Seeker();
-s.searchAll(Carro.class);
-s.searchAll(Moto.class);
-s.searchAll(Bicicleta.class);
