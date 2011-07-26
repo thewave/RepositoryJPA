@@ -6,6 +6,13 @@ import javax.persistence.EntityManager;
 
 import br.com.brasilti.utils.reflection.ReflectionUtil;
 
+/**
+ * Define as formas de retirar os dados de uma determinada instancia do repositorio.
+ * 
+ * @author Benedito Barbosa
+ * @author Christian Peixoto
+ * 
+ */
 public enum RemoveEnum {
 
 	LOGICAL {
@@ -23,7 +30,6 @@ public enum RemoveEnum {
 
 		}
 	},
-
 	PHYSICAL {
 		@Override
 		public <T> void remove(T instance, EntityManager manager) {

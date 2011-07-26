@@ -13,10 +13,21 @@ import br.com.brasilti.repository.enums.MethodEnum;
 import br.com.brasilti.repository.exceptions.RepositoryException;
 import br.com.brasilti.utils.reflection.ReflectionUtil;
 
-public class ClassValidator implements Serializable {
+/**
+ * Define as regras que garantem a manutencao dos dados de uma instancia.
+ * 
+ * @author Benedito Barbosa
+ * @author Christian Peixoto
+ * 
+ */
+public class ClassValidator {
 
-	private static final long serialVersionUID = 1L;
-
+	/**
+	 * Verifica se uma determinada classe obedece as regras que definem uma entidade.
+	 * 
+	 * @param klass
+	 * @throws RepositoryException
+	 */
 	public void validate(Class<?> klass) throws RepositoryException {
 		if (!ReflectionUtil.isAnnotated(klass, Entity.class)) {
 			throw new RepositoryException(ErrorEnum.ANNOTATION_ENTITY_NOT_FOUND);
@@ -45,6 +56,12 @@ public class ClassValidator implements Serializable {
 		}
 	}
 
+	/**
+	 * Indica que uma determinada classe e entidade.
+	 * 
+	 * @param klass
+	 * @return true se a classe e entidade.
+	 */
 	public boolean isEntity(Class<?> klass) {
 		try {
 			this.validate(klass);

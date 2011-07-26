@@ -15,6 +15,13 @@ import br.com.brasilti.repository.annotations.Transactional;
 import br.com.brasilti.repository.enums.InfoEnum;
 import br.com.brasilti.repository.exceptions.RepositoryException;
 
+/**
+ * Interceptador que inicia e finaliza uma transacao durante acesso ao repositorio.
+ * 
+ * @author Benedito Barbosa
+ * @author Christian Peixoto
+ * 
+ */
 @Interceptor
 @Transactional
 public class TransactionInterceptor implements Serializable {

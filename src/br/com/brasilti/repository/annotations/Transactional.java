@@ -7,6 +7,13 @@ import java.lang.annotation.Target;
 
 import javax.interceptor.InterceptorBinding;
 
+/**
+ * Define a classe ou metodo interceptado durante acesso ao repositorio.
+ * 
+ * @author Benedito Barbosa
+ * @author Christian Peixoto
+ * 
+ */
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE, ElementType.METHOD })
